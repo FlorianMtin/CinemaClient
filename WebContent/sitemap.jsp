@@ -13,14 +13,14 @@
 								 <ul class="sitemap-list">
 									<li><a href="index.jsp">Home Page</a></li>
 									<li><a href="about-us.jsp">About</a></li>
-									<li><a href="articles.jsp">Articles</a>
+									<li><a href="films.jsp">Articles</a>
 										<ul>
-											<li><a href="article.jsp">Article 1</a></li>
-											<li><a href="article.jsp">Article 2</a></li>
-											<li><a href="article.jsp">Article 3</a></li>
+											<li><a href="film.jsp">Article 2</a></li>
+											<li><a href="film.jsp">Article 1</a></li>
+											<li><a href="film.jsp">Article 3</a></li>
 										</ul>
 									</li>
-									<li><a href="contact-us.jsp">Contact Us</a></li>
+									<li><a href="new_film.jsp">Contact Us</a></li>
 									<li><a href="sitemap.jsp">Site Map</a></li>
 								 </ul>
 								 <p>Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequatuis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
