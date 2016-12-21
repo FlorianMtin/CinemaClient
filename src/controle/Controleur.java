@@ -1,5 +1,7 @@
 package controle;
 
+import java.io.Console;
+import java.io.Externalizable;
 import java.io.IOException;
 import java.util.List;
 
@@ -24,6 +26,8 @@ public class Controleur extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final String ACTION_TYPE = "action";
 	private static final String ERROR_PAGE = "/erreur.jsp";
+	private static final String FILMS = "films";
+	private static final String FILM = "unFilm";
 
 
 	/**
@@ -60,21 +64,46 @@ public class Controleur extends HttpServlet {
 		String destinationPage = ERROR_PAGE;
 		String reponse;
 
-		// execute l'action
-		//if( destinationPage == request.getParameter(INDEX)){
-		//	destinationPage ="/index.jsp";
+		if(FILMS.equals(actionName)){
+			String ressource = "/Films";
 
-		//}
-		//	else {
-		//		String messageErreur = "[" + actionName + "] n'est pas une action valide.";
-		//		request.setAttribute(ERROR_KEY, messageErreur);
-		//	}
-		//	// Redirection vers la page jsp appropriee
-		//	RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(destinationPage);
-		//	dispatcher.forward(request, response);
+			try{
+				Appel unAppel = new Appel();
+				reponse = unAppel.appelJson(ressource);
+				Gson gson = new Gson();
+				List<Film> json = gson.fromJson(reponse, List.class);
+				request.setAttribute("mesFilms",json);
 
 
+			}
+			catch (Exception e){
+				destinationPage ="/erreur.jsp";
+				request.setAttribute("MesErreurs",e.getMessage());
+			}
+			destinationPage = "/films.jsp";
+		}
 
+		else if(FILM.equals(actionName)){
+
+			String id = request.getParameter("id");
+			String ressource ="/Films/" + id;
+			try{
+				Appel unAppel = new Appel();
+				reponse = unAppel.appelJson(ressource);
+				Gson gson = new Gson();
+				Film json = gson.fromJson(reponse, Film.class);
+				request.setAttribute("monFilm",json);
+				System.out.println(json);
+
+			} catch (Exception e){
+				destinationPage ="/erreur.jsp";
+				request.setAttribute("MesErreurs",e.getMessage());
+			}
+			destinationPage = "/film.jsp";
+		}
+
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(destinationPage);
+		dispatcher.forward(request,response);
 	}
 }
 

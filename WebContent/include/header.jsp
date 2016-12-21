@@ -40,7 +40,7 @@
 						<ul>
 							<li><a href="index.jsp">Home</a></li>
 							<li><a href="about-us.jsp">About</a></li>
-							<li><a href="films.jsp">Film</a></li>
+							<li><a href="Controleur?action=films">Film</a></li>
 							<li><a href="new_film.jsp">Ajouter Film</a></li>
 							<li class="last"><a href="sitemap.jsp">Sitemap</a></li>
 						</ul>

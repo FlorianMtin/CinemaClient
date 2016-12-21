@@ -1,22 +1,19 @@
 package metier;
 
-/**
- * Created by Florian on 19/12/2016.
- */
 public class Film {
     private static final long serialVersionUID = 1L;
     int NoFilm;
-    String Film;
+    String Titre;
     int Duree;
     String DateSortie;
-    int Budget;
-    int MontantRecette;
+    long Budget;
+    long MontantRecette;
     int NoRea;
     String CodeCat;
 
-    public Film(int noFilm, String film, int duree, String dateSortie, int budget, int montantRecette, int noRea, String codeCat) {
+    public Film(int noFilm, String film, int duree, String dateSortie, long budget, long montantRecette, int noRea, String codeCat) {
         NoFilm = noFilm;
-        Film = film;
+        Titre = film;
         Duree = duree;
         DateSortie = dateSortie;
         Budget = budget;
@@ -34,10 +31,9 @@ public class Film {
         NoFilm = noFilm;
     }
     public String getFilm() {
-        return Film;
+        return Titre;
     }
-    public void setFilm(String film) {
-        Film = film;
+    public void setFilm(String film) {Titre = film;
     }
     public int getDuree() {
         return Duree;
@@ -51,16 +47,16 @@ public class Film {
     public void setDateSortie(String dateSortie) {
         DateSortie = dateSortie;
     }
-    public int getBudget() {
+    public Long getBudget() {
         return Budget;
     }
-    public void setBudget(int budget) {
+    public void setBudget(Long budget) {
         Budget = budget;
     }
-    public int getMontantRecette() {
+    public Long getMontantRecette() {
         return MontantRecette;
     }
-    public void setMontantRecette(int montantRecette) {
+    public void setMontantRecette(Long montantRecette) {
         MontantRecette = montantRecette;
     }
     public int getNoRea() {
