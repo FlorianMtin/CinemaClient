@@ -12,10 +12,12 @@
 					<h3>Add <span>Film</span></h3>
 					<form id="contacts-form" action="">
 						<fieldset>
-						<div class="field"><label>Your Name:</label><input type="text" value=""/></div>
-						<div class="field"><label>Your E-mail:</label><input type="text" value=""/></div>
-						<div class="field"><label>Your Website:</label><input type="text" value=""/></div>
-						<div class="field"><label>Your Message:</label><textarea cols="1" rows="1"></textarea></div>
+						<div class="field"><label>Nom du film:</label><input type="text" value=""/></div>
+						<div class="field"><label>Durée en minutes:</label><input type="text" value=""/></div>
+						<div class="field"><label>Budget:</label><input type="text" value=""/></div>
+						<div class="field"><label>Recette:</label><input type="text" value=""/></div>
+						<div class="field"><label>Réalisateur:</label><input type="text" value=""/></div>
+						<div class="field"><label>Catégorie:</label><input type="text" value=""/></div>
 						<div class="wrapper">
 							<a href="#" class="link2" onclick="document.getElementById('contacts-form').submit()">	
 								<span>
