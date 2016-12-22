@@ -7,10 +7,10 @@
 				<div class="content">
 					<h3>Fresh <span>Movies</span></h3>
 					<ul class="movies">
-						<c:forEach items="${mesFilms}" var="film">
+						<c:forEach items="${mesFilms}" var="item">
 						<li>
-							<h4>${film.Titre}</h4><img src="images/1page-img2.jpg" alt="" />
-							<div class="wrapper"><a href="Controleur?action=unFilm" method="post"  name="id" value="${film.NoFilm}"  class="link2" ><span><span>Read More</span></span></a></div>
+							<h4>${item.Titre}</h4><img src="images/1page-img2.jpg" alt="" />
+							<div class="wrapper"><a href="Controleur?action=unFilm&NoFilm=${item.NoFilm}"  class="link2" ><span><span>Read More</span></span></a></div>
 						</li>
 						</c:forEach>
 						<li class="clear">&nbsp;</li>

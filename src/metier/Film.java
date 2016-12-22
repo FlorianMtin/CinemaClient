@@ -6,14 +6,14 @@ public class Film {
     String Titre;
     int Duree;
     String DateSortie;
-    long Budget;
-    long MontantRecette;
+    int Budget;
+    int MontantRecette;
     int NoRea;
     String CodeCat;
 
-    public Film(int noFilm, String film, int duree, String dateSortie, long budget, long montantRecette, int noRea, String codeCat) {
+    public Film(int noFilm, String titre, int duree, String dateSortie, int budget, int montantRecette, int noRea, String codeCat) {
         NoFilm = noFilm;
-        Titre = film;
+        Titre = titre;
         Duree = duree;
         DateSortie = dateSortie;
         Budget = budget;
@@ -30,10 +30,10 @@ public class Film {
     public void setNoFilm(int noFilm) {
         NoFilm = noFilm;
     }
-    public String getFilm() {
+    public String getTitre() {
         return Titre;
     }
-    public void setFilm(String film) {Titre = film;
+    public void setTitre(String film) {Titre = film;
     }
     public int getDuree() {
         return Duree;
@@ -47,16 +47,16 @@ public class Film {
     public void setDateSortie(String dateSortie) {
         DateSortie = dateSortie;
     }
-    public Long getBudget() {
+    public int getBudget() {
         return Budget;
     }
-    public void setBudget(Long budget) {
+    public void setBudget(int budget) {
         Budget = budget;
     }
-    public Long getMontantRecette() {
+    public int getMontantRecette() {
         return MontantRecette;
     }
-    public void setMontantRecette(Long montantRecette) {
+    public void setMontantRecette(int montantRecette) {
         MontantRecette = montantRecette;
     }
     public int getNoRea() {

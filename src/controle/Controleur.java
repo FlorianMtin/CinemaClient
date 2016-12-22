@@ -3,9 +3,11 @@ package controle;
 import java.io.Console;
 import java.io.Externalizable;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.Servlet;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -45,7 +47,11 @@ public class Controleur extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		processusTraiteRequete(request, response);
+		try {
+			processusTraiteRequete(request, response);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -55,50 +61,44 @@ public class Controleur extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		processusTraiteRequete(request, response);
+		try {
+			processusTraiteRequete(request, response);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
-	protected void processusTraiteRequete(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void processusTraiteRequete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException,Exception{
 		String actionName = request.getParameter(ACTION_TYPE);
 		String destinationPage = ERROR_PAGE;
 		String reponse;
 
 		if(FILMS.equals(actionName)){
 			String ressource = "/Films";
+			Appel unAppel = new Appel();
+			reponse = unAppel.appelJson(ressource);
+			Gson gson = new Gson();
+			List<Film> json = gson.fromJson(reponse, List.class);
+			request.setAttribute("mesFilms",json);
 
-			try{
-				Appel unAppel = new Appel();
-				reponse = unAppel.appelJson(ressource);
-				Gson gson = new Gson();
-				List<Film> json = gson.fromJson(reponse, List.class);
-				request.setAttribute("mesFilms",json);
-
-
-			}
-			catch (Exception e){
-				destinationPage ="/erreur.jsp";
-				request.setAttribute("MesErreurs",e.getMessage());
-			}
 			destinationPage = "/films.jsp";
 		}
 
 		else if(FILM.equals(actionName)){
 
-			String id = request.getParameter("id");
-			String ressource ="/Films/" + id;
-			try{
-				Appel unAppel = new Appel();
-				reponse = unAppel.appelJson(ressource);
-				Gson gson = new Gson();
-				Film json = gson.fromJson(reponse, Film.class);
-				request.setAttribute("monFilm",json);
-				System.out.println(json);
+			String id = request.getParameter("NoFilm");
 
-			} catch (Exception e){
-				destinationPage ="/erreur.jsp";
-				request.setAttribute("MesErreurs",e.getMessage());
-			}
+			String ressource ="/Films/" + id;
+
+			Appel unAppel = new Appel();
+			reponse = unAppel.appelJson(ressource);
+			System.out.println(reponse);
+			Gson gson = new Gson();
+
+			Film film = gson.fromJson(reponse,metier.Film.class);
+
+
+			request.setAttribute("item",film);
 			destinationPage = "/film.jsp";
 		}
 
