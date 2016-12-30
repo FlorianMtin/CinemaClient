@@ -30,6 +30,7 @@ public class Controleur extends HttpServlet {
 	private static final String ERROR_PAGE = "/erreur.jsp";
 	private static final String FILMS = "films";
 	private static final String FILM = "unFilm";
+	private static final String ADDFILM = "addFilm";
 
 
 	/**
@@ -100,6 +101,23 @@ public class Controleur extends HttpServlet {
 
 			request.setAttribute("item",film);
 			destinationPage = "/film.jsp";
+		}
+
+		else if(ADDFILM.equals(actionName)){
+			String ressourceRea = "/Realisateurs";
+			Appel unAppel = new Appel();
+			reponse = unAppel.appelJson(ressourceRea);
+			Gson gson = new Gson();
+			List<Realisateur> acts = gson.fromJson(reponse,List.class);
+			request.setAttribute("rea",acts);
+
+			String ressourceCate ="/Categories";
+			reponse = unAppel.appelJson(ressourceCate);
+			List<Categorie> cate = gson.fromJson(reponse,List.class);
+			request.setAttribute("cate",cate);
+
+			destinationPage = "/new_film.jsp";
+
 		}
 
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(destinationPage);
