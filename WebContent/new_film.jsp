@@ -10,19 +10,20 @@
 									<div class="inner">
 
 					<h3>Add <span>Film</span></h3>
-					<form id="contacts-form" action="">
+					<form id="contacts-form" action="Controleur?action=insererFilm" method="post">
 						<fieldset>
-							<div class="field"><label>Nom du film:</label><input type="text" value=""/></div>
-						 	<div class="field"><label>Dur&eacute;e en minutes :</label><input type="text" value=""/></div>
-							<div class="field"><label>Budget:</label><input type="text" value=""/></div>
-							<div class="field"><label>Recette:</label><input type="text" value=""/></div>
+							<div class="field"><label>Nom du film:</label><input type="text" value="" name="nameFilm"/></div>
+						 	<div class="field"><label>Dur&eacute;e en minutes :</label><input type="text" value="" name="duree"/></div>
+							<div class="field"><label>Date de Sortie</label><input type="date" value="" name="date"/></div>
+							<div class="field"><label>Budget:</label><input type="text" value="" name="budget"/></div>
+							<div class="field"><label>Recette:</label><input type="text" value="" name="recette"/></div>
 							<div class="field"><label>R&eacute;alisateur:</label>
 								<SELECT id="choixRea" name="choixRea">
 									<Option value=0> CHOISSEZ UN REALISATEUR </Option>
 									<c:forEach items="${rea}" var="item">
-										<option value="${item.NomRea}">${item.NomAct} ${item.PrenRea}</option>
+										<option value="${item.NoRea}">${item.NomRea} ${item.PrenRea}</option>
 									</c:forEach>
-									<option value=NULL> None </option>
+									<option value=""> None </option>
 								</SELECT>
 							</div>
 							<div class="field"><label>Cat&eacute;gorie:</label>
@@ -31,12 +32,12 @@
 									<c:forEach items="${cate}" var="item">
 										<option value="${item.CodeCat}">${item.CodeCat} : ${item.LibelleCat}</option>
 									</c:forEach>
-									<Option value=NULL> None  </Option>
+									<Option value=""> None  </Option>
 
 								</SELECT>
 							</div>
 							<div class="wrapper">
-							<a href="#" class="link2" onclick="document.getElementById('contacts-form').submit()">	
+							<a class="link2" onclick="document.getElementById('contacts-form').submit()">
 								<span>
 									<span>Send Your Message</span>
 								</span>

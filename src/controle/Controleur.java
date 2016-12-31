@@ -31,6 +31,7 @@ public class Controleur extends HttpServlet {
 	private static final String FILMS = "films";
 	private static final String FILM = "unFilm";
 	private static final String ADDFILM = "addFilm";
+	private static final String INSERERFILM = "insererFilm";
 
 
 	/**
@@ -118,6 +119,29 @@ public class Controleur extends HttpServlet {
 
 			destinationPage = "/new_film.jsp";
 
+		}
+		else if(INSERERFILM.equals(actionName)){
+			String name = request.getParameter("nameFilm");
+			String duree = request.getParameter("duree");
+			String budget = request.getParameter("budget");
+			String date = request.getParameter("date");
+			String recette = request.getParameter("recette");
+			String rea = request.getParameter("choixRea");
+			String cate = request.getParameter("choixCate");
+			Film unfilm = new Film();
+			unfilm.setTitre(name);
+			unfilm.setDuree(Integer.parseInt(duree));
+			unfilm.setBudget(Integer.parseInt(budget));
+			unfilm.setDateSortie(date);
+			unfilm.setMontantRecette(Integer.parseInt(recette));
+			double d = Double.parseDouble(rea);
+			int coderea = (int) d;
+			unfilm.setNoRea(coderea);
+			unfilm.setCodeCat(cate);
+			String ressource = "/Film/Add/" + unfilm;
+			Appel unAppel = new Appel();
+			reponse = unAppel.postJson(ressource, unfilm);
+			destinationPage="/index.jsp";
 		}
 
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(destinationPage);
